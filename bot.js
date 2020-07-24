@@ -18,16 +18,21 @@ function botInit() {
     
     bot.on('message', async (msg) => { 
         const chatID = msg.chat.id
+        console.log('> mensagem recebida: \n', msg.text)
     
         //bot.sendMessage(chatID, 'Mensagem recebida!')        
 
-        if (msg.text == "vai"){
-            console.log('Mensagem: ', msg.text)
+        if (msg.text.toLowerCase() == "evangelho"){
 
-            const mensagem = await gospel.randomGospel()
-            //console.log(mensagem)
+            const mensagem = await gospel.randomGospel() // max 4096 caracteres
+            
+            msg = mensagem.split('. ')
 
-            bot.sendMessage(chatID, mensagem)
+            for (let i = 0; i < msg.length - 1; i++) {
+                console.log(msg[i])
+                await bot.sendMessage(chatID, msg[i])
+            }
+
         }
     })
 

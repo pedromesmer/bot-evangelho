@@ -35,15 +35,21 @@ async function randomGospel() {
                 reject(err)
             }
     
-            const $ = cheerio.load(body, {decodeEntities: true})
-            const titulo = $('p > b span font').html().trim()
+            const $ = cheerio.load(body, {decodeEntities: false})
+            const titulo = $('p > b span font').html().trim().replace('\n', '')
             const texto = $('p > span font').html().trim()
     
             //entities.decode(componente)
 
+            const splitMsg = (titulo + '\n' + texto).toString().replace(/\<[\w\s\W]+\>/, ' ').replace(/\([\w\s\W]+\)/, ' ')
+
+            
+            
+            //console.log(splitMsg)
+
+
             resolve(
-                `${titulo}\n
-                ${texto}`
+                splitMsg
             )            
         })        
     })
