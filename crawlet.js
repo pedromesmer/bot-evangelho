@@ -36,17 +36,20 @@ async function randomGospel() {
             }
     
             const $ = cheerio.load(body, {decodeEntities: true})
-            //console.log(body)
-            titulo = $(' p b span font').html().trim()        
+            const titulo = $('p > b span font').html().trim()
+            const texto = $('p > span font').html().trim()
     
-            // console.log(
-            //     entities.decode(componente), '-', componente
-            // )
-            //console.log(titulo)
+            //entities.decode(componente)
 
-            resolve((titulo))            
+            resolve(
+                `${titulo}\n
+                ${texto}`
+            )            
         })        
     })
 }
+
+randomGospel()
+
 module.exports.randomGospel = randomGospel
 module.exports.searchGospel = searchGospel

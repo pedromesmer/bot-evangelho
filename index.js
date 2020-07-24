@@ -3,8 +3,7 @@ const gospel = require('./crawlet.js')
 
 
 function start() {
-    bot.botInit() // inicia o bot
-    gospel.randomGospel()    
+    bot.botInit() // inicia o bot        
 }
 
 
