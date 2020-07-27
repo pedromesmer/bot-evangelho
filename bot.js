@@ -22,15 +22,15 @@ function botInit() {
     
         //bot.sendMessage(chatID, 'Mensagem recebida!')        
 
-        if (msg.text.toLowerCase() == "evangelho"){
+        if (msg.text.toLowerCase() == "e"){
 
             const mensagem = await gospel.randomGospel() // max 4096 caracteres
             
-            msg = mensagem.split('. ')
+            msg = mensagem.split('. ') // separa o texto a cada '. ' -> garante o envio de mensagens com mais de 4096 caracteres
 
             for (let i = 0; i < msg.length - 1; i++) {
                 console.log(msg[i])
-                await bot.sendMessage(chatID, msg[i])
+                await bot.sendMessage(chatID, msg[i]) // aguarda o envio da mensagem para enviar a próxima -> garante o envio na ordem
             }
 
         }

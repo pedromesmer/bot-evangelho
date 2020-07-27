@@ -41,7 +41,9 @@ async function randomGospel() {
     
             //entities.decode(componente)
 
-            const splitMsg = (titulo + '\n' + texto).toString().replace(/\<[\w\s\W]+\>/, ' ').replace(/\([\w\s\W]+\)/, ' ')
+            // \<[\w\s\W]+\> -> remove os < , > e tudo dentro deles
+            // \([\w\s\W]+\) -> remove os ( , ) e tudo dentro deles
+            const splitMsg = (titulo + '\n . ' + texto).toString().replace(/\<[\w\s\W]+\>/, ' ').replace(/\([\w\s\W]+\)/, ' ')
 
             
             
